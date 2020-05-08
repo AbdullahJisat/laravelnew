@@ -6,7 +6,7 @@
             <h2>Laravel 5.7 CRUD Example from scratch - ItSolutionStuff.com</h2>
         </div>
         <div class="pull-right">
-            <a class="btn btn-success" href="{{ route('Department.create') }}"> Create New Department</a>
+            <a class="btn btn-success" href="{{ route('department.create') }}"> Create New Department</a>
         </div>
     </div>
 </div>
@@ -46,8 +46,8 @@ endif -->
                 <td>{{ $department->actionBy }}</td>
                 <td>{{ $department->is_delete }}</td>
                 <td>
-                    <form action="{{ route('Department.destroy',$department->id) }}" method="POST">
-                        <a class="btn btn-primary" href="{{ route('Department.edit',$department->id) }}">Edit</a>
+                    <form action="{{ route('department.destroy',$department->id) }}" method="POST">
+                        <a class="btn btn-primary" href="{{ route('department.edit',$department->id) }}">Edit</a>
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="btn btn-danger">Delete</button>

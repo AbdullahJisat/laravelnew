@@ -4,17 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Department;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Validation\Rule;
-use Illuminate\Http\UploadedFile;
 
 class DepartmentController extends Controller
 {
     public function index()
     {
-       $datas = Department::all();
-       return view('department.index')->with(['datas'=>$datas]);
+       $departments = Department::all();
+       return view('department.index')->with(['datas'=>$departments]);
    }
    public function create()
    {
@@ -36,13 +32,13 @@ class DepartmentController extends Controller
         ];
 
         Department::create($data);
-        return redirect()->route('Department.index')
+        return redirect()->route('department.index')
         ->with('success','created successfully.');
     }
     public function edit($id)
     {
         $data=Department::find($id);
-        return view('Department.edit')->with(['data' => $data]);
+        return view('department.edit')->with(['data' => $data]);
     }
     public function update(Request $request, $id)
     {

@@ -6,7 +6,7 @@
                 <h2>Edit Course</h2>
             </div>
             <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('Course.index') }}"> Back</a>
+                <a class="btn btn-primary" href="{{ route('course.index') }}"> Back</a>
             </div>
         </div>
     </div>
@@ -51,7 +51,7 @@
             <select name="department_id" id="dep_id" class="form-control">
                 <option value="">--Select Department--</option>
                 @foreach ($dep as $dep)
-                <option value="{{$dep->id}}"> {{ $dep->code }}</option>  
+                <option value="{{$dep->id}}"> {{ $dep->code }}</option>
                 @endforeach
             </select>
         </div>
@@ -63,7 +63,7 @@
 
 <script>
     $(document).ready(function(){
-        
+
         document.getElementById("dep_id").value = '{{$data->department_id}}';
 
     });

@@ -1,20 +1,27 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('Department/create','DepartmentController@create')->name('department.create');
-Route::resource('Department', 'DepartmentController');
-Route::resource('Course', 'CourseController'); 
+/////////////////// DEPARTMENT ROUTES /////////////////////
+Route::group(['prefix' => 'department'], function() {
+    Route::get('/','DepartmentController@index')->name('department.index');
+    Route::get('create','DepartmentController@create')->name('department.create');
+    Route::post('store','DepartmentController@store')->name('department.store');
+    Route::delete('destroy/{id}','DepartmentController@destroy')->name('department.destroy');
+    Route::put('update/{id}','DepartmentController@update')->name('department.update');
+    Route::get('edit/{id}','DepartmentController@destroy')->name('department.edit');
+});
+
+
+/////////////////// COURSE ROUTES /////////////////////
+Route::group(['prefix' => 'course'], function() {
+    Route::get('/','CourseController@index')->name('course.index');
+    Route::get('create','CourseController@create')->name('course.create');
+    Route::post('store','CourseController@store')->name('course.store');
+    Route::delete('destroy/{id}','CourseController@destroy')->name('course.destroy');
+    Route::put('update/{id}','CourseController@update')->name('course.update');
+    Route::get('edit/{id}','CourseController@destroy')->name('course.edit');
+});

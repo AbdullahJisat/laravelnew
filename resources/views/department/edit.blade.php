@@ -6,7 +6,7 @@
                 <h2>Edit Product</h2>
             </div>
             <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('Department.index') }}"> Back</a>
+                <a class="btn btn-primary" href="{{ route('department.index') }}"> Back</a>
             </div>
         </div>
     </div>
@@ -19,7 +19,7 @@
             </ul>
         </div>
     @endif
-    <form action="{{ route('Department.update',$data->id) }}" method="POST">
+    <form action="{{ route('department.update',$data->id) }}" method="POST">
         @csrf
         @method('PUT')
     <div class="row">

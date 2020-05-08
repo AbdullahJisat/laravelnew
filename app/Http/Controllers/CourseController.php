@@ -20,7 +20,7 @@ class CourseController extends Controller
                 ->where('courses.is_delete','=',0)->where('departments.is_delete','=',0)
                 ->get();
                 /*$datas = Course::all();*/
-       return view('Course.index')->with(['datas'=>$datas]);
+       return view('course.index')->with(['datas'=>$datas]);
    }
    public function create()
    {
@@ -46,7 +46,7 @@ class CourseController extends Controller
         ];
 
         Course::create($data);
-        return redirect()->route('Course.index')
+        return redirect()->route('course.index')
             ->with('success','created successfully.');
     }
 

@@ -6,7 +6,7 @@
             <h2>Add New Course</h2>
         </div>
         <div class="pull-right">
-            <a class="btn btn-primary" href="{{ route('Course.index') }}"> Back</a>
+            <a class="btn btn-primary" href="{{ route('course.index') }}"> Back</a>
         </div>
     </div>
 </div>
@@ -19,7 +19,7 @@
     </ul>
 </div>
 @endif
-<form method="POST" action="{{url()->to('Course')}}">
+<form method="POST" action="{{route('course.store')}}">
     @csrf
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12">
@@ -50,7 +50,7 @@
             <select name="department_id" class="form-control">
                 <option value="">--Select Department--</option>
                 @foreach ($datas as $department => $value)
-                <option value="{{ $department }}"> {{ $value }}</option>  
+                <option value="{{ $department }}"> {{ $value }}</option>
                 @endforeach
             </select>
         </div>
