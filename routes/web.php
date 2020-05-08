@@ -14,7 +14,6 @@
 Route::get('/', function () {
     return view('welcome');
 });
-
-Route::get('Department/create','DepartmentController@create')->name('department.create');
 Route::resource('Department', 'DepartmentController');
 Route::resource('Course', 'CourseController'); 
+Route::resource('Student','StudentController');
