@@ -10,34 +10,34 @@ use Illuminate\Validation\Rule;
 use Illuminate\Http\UploadedFile;
 
 class DepartmentController extends Controller
-{    
+{
     public function index()
     {
        $datas = Department::all();
-       return view('Department.index')->with(['datas'=>$datas]);
+       return view('department.index')->with(['datas'=>$datas]);
    }
    public function create()
    {
-       return view('Department.create');
+       return view('department.create');
    }
    public function store(Request $request)
    {
-    $this->validate($request,[
-        'code' => 'string|max:255',
-        'name' => 'required|string|max:255',
-    ]);
-    $data = [
-        'code'=> $request->name,
-        'name'=> $request->name,
-        'action' => 'Inserted',
-        'actionBy' => 'Me',
-        'actionTime' => date("Y-m-d H:i:s"),
-        'is_delete' => 0,
-    ];
+        $this->validate($request,[
+            'code' => 'string|max:255',
+            'name' => 'required|string|max:255',
+        ]);
+        $data = [
+            'code'=> $request->name,
+            'name'=> $request->name,
+            'action' => 'Inserted',
+            'actionBy' => 'Me',
+            'actionTime' => date("Y-m-d H:i:s"),
+            'is_delete' => 0,
+        ];
 
-    Department::create($data);
-    return redirect()->route('Department.index')
-    ->with('success','created successfully.');
+        Department::create($data);
+        return redirect()->route('Department.index')
+        ->with('success','created successfully.');
     }
     public function edit($id)
     {
