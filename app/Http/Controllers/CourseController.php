@@ -24,27 +24,26 @@ class CourseController extends Controller
    }
    public function create()
    {
-    $datas = DB::table('departments')
-                ->pluck('code','id');
-    return view('Course.create')->with(['datas'=>$datas]);
-       return view('Course.create');
+        $datas = DB::table('departments')
+                    ->pluck('code','id');
+        return view('course.create')->with(['datas'=>$datas]);
    }
    public function store(Request $request)
    {
-    $this->validate($request,[
-        'code' => 'string|max:255',
-        'name' => 'required|string|max:255',
-        'department_id' => 'sometimes|nullable',
-    ]);
-    $data = [
-        'code'=> $request->code,
-        'name'=> $request->name,
-        'department_id' => $request->department_id,
-        'action' => 'Inserted',
-        'actionBy' => 'Me',
-        'actionTime' => date("Y-m-d H:i:s"),
-        'is_delete' => 0,
-    ];
+        $this->validate($request,[
+            'code' => 'string|max:255',
+            'name' => 'required|string|max:255',
+            'department_id' => 'sometimes|nullable',
+        ]);
+        $data = [
+            'code'=> $request->code,
+            'name'=> $request->name,
+            'department_id' => $request->department_id,
+            'action' => 'Inserted',
+            'actionBy' => 'Me',
+            'actionTime' => date("Y-m-d H:i:s"),
+            'is_delete' => 0,
+        ];
 
         Course::create($data);
         return redirect()->route('Course.index')
@@ -79,7 +78,7 @@ class CourseController extends Controller
 
         Course::find($id)->update($data);
         return redirect()->route('Course.index')
-    ->with('success','update successfully.');
+            ->with('success','update successfully.');
     }
     public function destroy($id)
     {
