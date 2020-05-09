@@ -17,3 +17,8 @@ Route::get('/', function () {
 Route::resource('Department', 'DepartmentController');
 Route::resource('Course', 'CourseController'); 
 Route::resource('Student','StudentController');
+Route::resource('CourseAssign','CourseAssignController');
+
+Route::get('CourseAssign/create','CourseAssignController@create');
+Route::get('CourseAssign/getCourseByDepartmentId/{id}','CourseAssignController@getCourseByDepartmentId');
+Route::get('CourseAssign/getStudentByDepartmentId/{id}','CourseAssignController@getStudentByDepartmentId');
